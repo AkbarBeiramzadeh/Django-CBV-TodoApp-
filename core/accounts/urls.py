@@ -3,7 +3,7 @@ from . import views
 
 from django.contrib.auth.views import LogoutView
 
-app_name = 'todo'
+app_name = 'accounts'
 
 urlpatterns = [
     path("login/", views.CustomLoginView.as_view(), name="login"),

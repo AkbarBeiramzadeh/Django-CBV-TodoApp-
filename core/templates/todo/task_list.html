@@ -10,11 +10,12 @@
     <div class="modal-content rounded-5 shadow">
       <div class="modal-header p-5 pb-4 border-bottom-0">
         <!-- <h5 class="modal-title">Modal title</h5> -->
-        <h2 class="fw-bold mb-0">Todo App</h2>
-{#        <a type="button" class="btn-close" href="{% url 'accounts:logout' %}"></a>#}
+        <h2 style="text-align: center">Todo App</h2>
+          <h2>{{ request.user }} <a href="{% url 'accounts:logout' %}">Logout</a></h2>
+
       </div>
 
-      <div class="modal-body p-5 pt-0">
+      <div style="text-align: center">
 
         <form class="pt-3" method="POST" action="{% url 'todo:create_task' %}">
           {% csrf_token %}
@@ -35,15 +36,12 @@
               <span>{{task}}</span>
               {% endif %}
             </span>
-            <a type="button" class="btn btn-danger" href="{% url 'todo:delete_task' task.id %}"><i class="bi bi-trash"></i></a>
-            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
+            <a type="button" class="btn btn-danger" href="{% url 'todo:delete_task' task.id %}">Delete</a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="{% url 'todo:complete_task' task.id %}">Done</a></li>
               <li><a class="dropdown-item" href="{% url 'todo:update_task' task.id %}">Edit</a></li>
             </ul>
+              <hr>
           </div>
 
           {% endfor %}
